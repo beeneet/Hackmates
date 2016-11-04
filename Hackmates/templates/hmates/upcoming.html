@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hackathons | Upcoming</title>
+</head>
+<body>
+	<h1> Hackathons </h1>
+	{{ today }}
+	<ul>
+		{% for particular_hacks in hackathon_details %}
+			<li> {{ particular_hacks.title }} : {{particular_hacks.startDate.date}} -- {{particular_hacks.endDate.date}}</li>  <!--date instead of date() -->
+		{% endfor %}
+	</ul>
+	<h2> Upcoming </h2>
+	<ul>
+		{% for particular_hacks in hackathon_details %}
+			{% if particular_hacks.startDate.date > today %}
+				<li> {{ particular_hacks.title }} : {{particular_hacks.startDate.date}} -- {{particular_hacks.endDate.date}}</li>  <!--date instead of date() -->
+			{% endif %}
+		{% endfor %}
+	</ul>
+</body>
+</html>
